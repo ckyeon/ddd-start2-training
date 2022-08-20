@@ -3,11 +3,11 @@ package ckyeon.dddshop.order.domain;
 public class OrderLine {
 
 	private Product product;
-	private int price;
+	private Money price;
 	private int quantity;
-	private int amounts;
+	private Money amounts;
 
-	public OrderLine(Product product, int price, int quantity) {
+	public OrderLine(Product product, Money price, int quantity) {
 		this.product = product;
 		this.price = price;
 		this.quantity = quantity;
@@ -15,7 +15,7 @@ public class OrderLine {
 	}
 
 	public int getAmounts() {
-		return amounts;
+		return amounts.getValue();
 	}
 
 	public Product getProduct() {
@@ -23,14 +23,14 @@ public class OrderLine {
 	}
 
 	public int getPrice() {
-		return price;
+		return price.getValue();
 	}
 
 	public int getQuantity() {
 		return quantity;
 	}
 
-	private int calculateAmounts() {
-		return price * quantity;
+	private Money calculateAmounts() {
+		return price.multiply(quantity);
 	}
 }
